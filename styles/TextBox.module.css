@@ -1,0 +1,59 @@
+/*------------Navbar settings-------------*/
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.nav div {
+    margin-top: 25px;
+}
+
+.label {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.label input {
+    width: 250px;
+}
+
+.prompt {
+    display: block;
+}
+
+.prompt input {
+    width: 500px;
+    max-width: 70%;
+}
+
+.nav label,
+.nav input {
+    font-size: 16px;
+    margin: 0 5px;
+}
+
+.nav input {
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: rgb(231, 231, 231);
+    border: 0px;
+    padding: 4px 8px;
+}
+
+.button {
+    padding: 5px 15px;
+    font-size: 17px;
+    display: block;
+    margin: 25px auto;
+    margin-bottom: 30px;
+    background-color: rgba(96, 191, 161, 0.8);
+    color: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.button:hover {
+    background-color: rgba(96, 191, 161, 1);
+}

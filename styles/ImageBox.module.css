@@ -1,0 +1,237 @@
+/*------------Navbar settings-------------*/
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .nav * {
+    display: inline-block;
+    font-size: 17px;
+    margin: 5px;
+  }
+  
+  .nav input {
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: rgb(231, 231, 231);
+    border: 0px;
+    padding: 4px 8px;
+  }
+  
+  /*------------Image Grid settings-------------*/
+  .images-container {
+    margin: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 320px;
+  }
+  
+  .image-box {
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    margin: 15px;
+    position: relative;
+    z-index: 0;
+    height: 130px;
+    max-width: 200px;
+    overflow: hidden;
+  }
+  
+  .thumbnails {
+    height: 100%;
+    padding: 0;
+    object-fit: cover;
+  }
+  
+  .thumbnails:hover {
+    cursor: pointer;
+  }
+  
+  /*------------Lightbox settings-------------*/
+  .lightbox-container {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(37, 39, 43, 0.6);
+    margin-left: -10px;
+    display: flex;
+    z-index: 1;
+    justify-content: center;
+  }
+  
+  .lightbox {
+    display: inline-block;
+    background-color: rgb(20, 21, 26);
+    box-shadow: 0 6px 60px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    margin: auto;
+    width: 50%;
+    height: 65%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+  }
+  
+  .exit,
+  .switch-photo {
+    margin: -5px;
+    margin-bottom: 15px;
+    height: 24px;
+    width: 24px;
+    position: relative;
+  }
+  
+  .exit {
+    float: right;
+    font-size: 15px;
+  }
+  
+  .switch-photo {
+    margin-right: 12px;
+    font-weight: 800px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  
+  .switch-photo:focus,
+  .exit:focus {
+    outline: none;
+  }
+  
+  .disabled {
+    background-color: rgba(231, 231, 231, 0.3);
+  }
+  
+  .disabled:hover {
+    background-color: rgba(231, 231, 231, 0.3);
+    cursor: auto;
+  }
+  
+  .previous {
+    padding-left: 3px;
+  }
+  
+  .next {
+    padding-right: 3px;
+  }
+  
+  .bigImageContainer {
+    overflow: hidden;
+    height: 80%;
+    position: relative;
+  }
+  
+  .bigImage {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
+    background-color: white;
+  }
+  
+  .image-selection {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%);
+    background-color: rgb(20, 21, 26);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .choose-image {
+    padding: 4px 8px;
+    margin: 20px 10px 30px 10px;
+    font-size: 16px;
+  }
+  
+  /*For mobile phones*/
+  
+  @media only screen and (max-width: 400px) {
+    /*------------Navbar settings-------------*/
+    .nav {
+      position: relative;
+      margin: 0 30px -15px 30px;
+      justify-content: space-around;
+    }
+  
+    .nav * {
+      font-size: 14px;
+      padding-bottom: 0;
+    }
+  
+    .nav select {
+      font-size: 14px;
+    }
+  
+    /*------------Image Grid settings-------------*/
+    .images-container {
+      margin: 10px 10px 50px 10px;
+    }
+  
+    .image-box {
+      margin: 15px;
+      width: 130px;
+      height: 130px;
+    }
+  
+    .image-title p {
+      margin: 4px;
+    }
+  
+    .name {
+      font-size: 14px;
+    }
+  
+    .lifespan {
+      font-size: 12px;
+    }
+  
+    /*------------Lightbox settings-------------*/
+    .lightbox-container {
+      margin-left: -5px;
+    }
+  
+    .exit,
+    .switch-photo {
+      margin: 10px;
+      height: 20px;
+      width: 20px;
+      font-size: 12px;
+      border-radius: 10px;
+    }
+  
+    .switch-photo {
+      margin-right: 0;
+    }
+  
+    .exit,
+    .previous,
+    .next {
+      padding-left: 5px;
+    }
+  
+    .caption {
+      font-size: 15px;
+      top: 10px;
+      padding: 0 5px;
+    }
+  
+    .full-screen {
+      font-size: 12px;
+    }
+  
+    .bigImageContainer {
+      margin: 5%;
+    }
+  }
+  

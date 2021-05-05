@@ -1,0 +1,41 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  padding-bottom: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+  background-image: url(/dark-blur-gradient.jpg)/*linear-gradient(to bottom, rgb(13, 17, 22), rgb(35, 44, 58), rgb(24, 30, 41))*/;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: rgb(231, 231, 231);
+  margin: 10px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  text-align: center;
+  border: 0px;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  background-color: rgb(180, 180, 180);
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(231, 231, 231);
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    margin: 5px;
+  }
+}
