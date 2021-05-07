@@ -37,7 +37,7 @@ export default function PublishBox({ image1, image2, text }) {
           Attachments : [
             {
               name : "this-or-that.png",
-              path : "https://www.sciencemag.org/sites/default/files/styles/inline__450w__no_aspect/public/dogs_1280p_0.jpg?itok=h6VBayx-"
+              path : image
             }]
         });
         document.getElementById("screenshot").src = image;
