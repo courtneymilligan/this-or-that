@@ -27,6 +27,9 @@ function Inputs({ text, setText }) {
             label2: event.target.elements.label2.value === "ex: Sriracha Sauce" ? "" : event.target.elements.label2.value,
         };
         setText(newText);
+        event.target.elements.prompt.value = "";
+        event.target.elements.label1.value = "";
+        event.target.elements.label2.value = "";
     }
 
     return (

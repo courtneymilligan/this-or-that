@@ -87,14 +87,15 @@ function ImageSearch({ setCategory, category }) {
       q:
         category === "ex: Frank's Red Hot Sauce"
           ? "Frank's Red Hot Sauce"
-          : category
+          : category,
+      start: 1
     };
   
     for (const [key, value] of Object.entries(queryParams)) {
       url.searchParams.append(key, value);
     }
   
-    const { isLoading, error, data, isFetching } = useQuery(category, () =>
+    const { isLoading, error, data } = useQuery(category, () =>
       fetch(url).then((res) => res.json())
     );
   
