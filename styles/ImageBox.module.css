@@ -54,11 +54,11 @@
   /*------------Lightbox settings-------------*/
   .lightbox-container {
     position: fixed;
-    top: 0;
+    top: 20px;
+    left: 0;
     height: 100%;
     width: 100%;
     background-color: rgba(37, 39, 43, 0.6);
-    margin-left: -10px;
     display: flex;
     z-index: 1;
     justify-content: center;
@@ -122,8 +122,8 @@
   
   .bigImageContainer {
     overflow: hidden;
-    height: 80%;
     position: relative;
+    height: 305px;
   }
   
   .bigImage {
@@ -132,7 +132,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: contain;
-    max-height: 267px;
+    max-height: 306px;
     max-width: 100%;
     background-color: white;
   }
@@ -156,7 +156,7 @@
   
   /*For mobile phones*/
   
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 650px) {
     /*------------Navbar settings-------------*/
     .nav {
       position: relative;
@@ -232,6 +232,12 @@
   
     .bigImageContainer {
       margin: 5%;
+    }
+
+    .choose-image {
+      padding: 4px 8px;
+      margin: 20px 10px 30px 10px;
+      font-size: 14px;
     }
   }
   
