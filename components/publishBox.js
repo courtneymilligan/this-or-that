@@ -43,9 +43,6 @@ export default function PublishBox({ image1, image2, text }) {
   }
 
   const imageContainerImgStyle = {
-    height: "100%",
-    width: "100%",
-    objectFit: "cover",
     backgroundColor: "white",
     zIndex: "1",
     borderRadius: "5px",
@@ -159,7 +156,7 @@ function ImageDisplay( {number, image, label, containerStyle, imageStyle} ) {
   return (
       <div className={publishBoxStyles.imageContainer} style={containerStyle}>
           <p className={publishBoxStyles.textContainer}>{image ? null : `${number} Image Not Selected`}</p>
-          {image ? <img src={image.link} alt={image.title} style={imageStyle} width="300" height="300"></img> : null}
+          {image ? <img src={image.link} alt={image.title} style={imageStyle}  width="300" height="300"></img> : null}
           <p className={publishBoxStyles.labels}>{label}</p>
       </div>
   )
