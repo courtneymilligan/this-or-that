@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import {
-  useQuery,
+  useInfiniteQuery,
   useQueryClient
 } from "react-query";
 import imageBoxStyles from "../styles/ImageBox.module.css";
 import homeStyles from "../styles/Home.module.css"
 
-export default function ImageBox({ setImage1, setImage2 }) {
+export default function ImageBox({ image1, image2, setImage1, setImage2 }) {
     const [image, setImage] = useState(-1);
     const [category, setCategory] = useState("ex: Frank's Red Hot Sauce");
   
     const onBackClick = () => {
       setImage(-1);
     };
+    const checkStyle = {fontSize: 24,
+      color: 'rgba(96, 191, 161, 1)'
+    }
   
     return (
       <div className={homeStyles.container}>
@@ -26,7 +29,7 @@ export default function ImageBox({ setImage1, setImage2 }) {
             category={category}
           />
         ) : null}
-        <h3>Step 2: Select Images</h3>
+        <h3>Step 2: Select Images<span style={checkStyle}>{image1 && image2 ? ' ✔' : null }</span></h3>
         <div className={imageBoxStyles.nav}>
           <ImageSearch setCategory={setCategory} category={category} />
         </div>
@@ -76,7 +79,7 @@ function ImageSearch({ setCategory, category }) {
       </form>
     );
   }
-  
+
   function Images({ setImage, category }) {
     const url = new URL("https://www.googleapis.com/customsearch/v1");
   
@@ -88,48 +91,71 @@ function ImageSearch({ setCategory, category }) {
         category === "ex: Frank's Red Hot Sauce"
           ? "Frank's Red Hot Sauce"
           : category,
-      start: 1
     };
   
     for (const [key, value] of Object.entries(queryParams)) {
       url.searchParams.append(key, value);
     }
-  
-    const { isLoading, error, data } = useQuery(category, () =>
-      fetch(url).then((res) => res.json())
-    );
-  
+
+    const { 
+      isLoading, 
+      data,
+      error,
+      isFetchingNextPage,
+      fetchNextPage,
+      hasNextPage } = useInfiniteQuery(category, 
+        async ({ pageParam = 0 }) => {
+          const res = await fetch(url + "&start=" + (pageParam * 10 + 1));
+          return res.json();
+        }, {
+      getNextPageParam: () => data ? (data.pageParams.length > 1 ? data.pageParams.slice(-1)[0] + 1 : 1) : 1//pageNum + 1
+    })
+
     if (isLoading) return  <div className={imageBoxStyles["images-container"]}>Loading...</div>;
     if (error) return <div className={imageBoxStyles["images-container"]}>{"An error has occurred: " + error.message}</div>;
-  
-    const newData = data.items;
-  
+
+    const handleClick = () => {
+      fetchNextPage()
+    }
     return (
-      <div className={imageBoxStyles["images-container"]}>
-        {newData.map((item, index) => {
-          return (
-            <div key={`${index}-${item.title}`} className={imageBoxStyles["image-box"]}>
-              <img
-                className={imageBoxStyles.thumbnails}
-                src={item.link}
-                alt={item.title}
-                onClick={() => setImage(index)}
-              />
-            </div>
-          );
-        })}
-        {/*<div>{isFetching ? "Updating..." : ""}</div>*/}
-      </div>
+      <>
+        <div className={imageBoxStyles["images-container"]}>
+        {data.pages.map((page, pageIndex) => (
+            <React.Fragment key={pageIndex}>
+              {page.items.map((item, itemIndex) => (
+                <div key={`${itemIndex}-${item.title}`} className={imageBoxStyles["image-box"]}>
+                <img
+                  className={imageBoxStyles.thumbnails}
+                  src={item.link}
+                  alt={item.title}
+                  onClick={() => setImage(pageIndex * 10 + itemIndex)}
+                />
+              </div>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+        <button 
+          onClick={handleClick}
+          className={imageBoxStyles.button}disabled={!hasNextPage || isFetchingNextPage}
+          >
+            { hasNextPage
+              ? 'Load More'
+              : 'Nothing more to load'}
+        </button>
+      </>
     );
   }
-  
+
   function Lightbox({ onBackClick, image, setImage, setImage1, setImage2, category }) {
     const queryClient = useQueryClient();
-    const data = queryClient.getQueryData([category]);
-    const queryItem = data.items[image];
+    const data = queryClient.getQueryData(category);
+    const page = Math.floor(image/10);
+    const num = image % 10;
+    const queryItem = data.pages[page].items[num];
   
     const nextImage = () => {
-      setImage(Math.min(data.items.length - 1, image + 1));
+      setImage(Math.min(data.pages.length*10 - 1, image + 1));
     };
   
     const previousImage = () => {
@@ -184,7 +210,7 @@ function ImageSearch({ setCategory, category }) {
             &#60;
           </button>
           <button
-            className={`${imageBoxStyles["switch-photo"]} ${imageBoxStyles.next} ${image < data.items.length - 1 ? null : imageBoxStyles.disabled}`}
+            className={`${imageBoxStyles["switch-photo"]} ${imageBoxStyles.next} ${image < data.pages.length*10 - 1 ? null : imageBoxStyles.disabled}`}
             onClick={nextImage}
           >
             &#62;
@@ -203,8 +229,4 @@ function ImageSearch({ setCategory, category }) {
         </div>
       </div>
     );
-  }
-
-  export async function getStaticProps() {
-    return { props: {} }
   }

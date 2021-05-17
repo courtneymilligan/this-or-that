@@ -27,7 +27,7 @@ export default function App() {
           <img src="/question.png" alt="?" />
         </div>
         <TextBox text={text} setText={setText}/>
-        <ImageBox setImage1={setImage1} setImage2={setImage2}/>
+        <ImageBox image1={image1} image2={image2} setImage1={setImage1} setImage2={setImage2}/>
         <PublishBox image1={image1} image2={image2} text={text}/>
       </main>
     </>

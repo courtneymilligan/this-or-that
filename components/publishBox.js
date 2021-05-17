@@ -1,10 +1,13 @@
 import publishBoxStyles from "../styles/PublishBox.module.css";
 import homeStyles from "../styles/Home.module.css";
-import html2canvas from 'html2canvas';
 import React, { useState, useEffect, createRef } from "react";
 
 export default function PublishBox({ image1, image2, text }) {
   const ref = createRef();
+  const [check, setCheck] = useState(false);
+  const checkStyle = {fontSize: 24,
+    color: 'rgba(96, 191, 161, 1)'
+  }
 
   const previewContentstyle = {
     backgroundColor: "rgb(94, 94, 99)",
@@ -67,27 +70,7 @@ export default function PublishBox({ image1, image2, text }) {
         alert("You forgot to input a prompt");
         return;
     }
-    /*
-    const contentNode = ref.current;
-    html2canvas(contentNode, {
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: "#25272b",
-      scrollY: -window.scrollY,
-      scrollX: -window.scrollX - 5
-    }).then(function(canvas) {
-      const image = canvas.toDataURL("image/jpeg", 0.5);
-      Email.send({
-        SecureToken : process.env.NEXT_PUBLIC_EMAIL_TOKEN,
-        To : email,
-        From : process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
-        Subject : "This or That!",
-        Body : document.getElementById("email-content").innerHTML,
-      }).then(
-        message => console.log(message)
-      );
-      alert("Your message has been sent to " + email);
-    });*/
+    
     Email.send({
       SecureToken : process.env.NEXT_PUBLIC_EMAIL_TOKEN,
       To : email,
@@ -103,12 +86,13 @@ export default function PublishBox({ image1, image2, text }) {
           }
         }
       );
+    setCheck(true);
     event.target.elements.email.value = "";
   };
 
   return (
     <div className={homeStyles.container}>
-      <h3>Step 3: Send It Out</h3>
+      <h3>Step 3: Send It Out<span style={checkStyle}>{check ? ' ✔' : null }</span></h3>
       <div className={publishBoxStyles.contentContainer}>
         <div className={publishBoxStyles.previewCase}>
           <p className={publishBoxStyles.preview}>Preview of Selections</p>
@@ -126,25 +110,27 @@ export default function PublishBox({ image1, image2, text }) {
           <PublishForm handleSubmit={handleSubmit}/>
           <div  id="email-content" style={{display: "none"}}>
             <table style={previewContentstyle}>
-              <tr>
-                <td colspan="3"style={promptStyle}>{text.prompt}</td>
-              </tr>
-              <tr>
-                <td>
-                  <ImageDisplay number="First" image={image1} containerStyle={imageContainerStyle} imageStyle={imageContainerImgStyle}/>
-                </td>
-                <td>
-                  <div style={orStyle}>OR</div>
-                </td>
-                <td>
-                  <ImageDisplay number="Second" image={image2} containerStyle={imageContainerStyle} imageStyle={imageContainerImgStyle}/>
-                </td>
-              </tr>
-              <tr>
-                <td style={labelsStyle}>{text.label1}</td>
-                <td></td>
-                <td style={labelsStyle}>{text.label2}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td colSpan="3"style={promptStyle}>{text.prompt}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <ImageDisplay number="First" image={image1} containerStyle={imageContainerStyle} imageStyle={imageContainerImgStyle}/>
+                  </td>
+                  <td>
+                    <div style={orStyle}>OR</div>
+                  </td>
+                  <td>
+                    <ImageDisplay number="Second" image={image2} containerStyle={imageContainerStyle} imageStyle={imageContainerImgStyle}/>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={labelsStyle}>{text.label1}</td>
+                  <td></td>
+                  <td style={labelsStyle}>{text.label2}</td>
+                </tr>
+              </tbody>
             </table> 
           </div> 
         </div>
