@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import textBoxStyles from "../styles/TextBox.module.css";
 import homeStyles from "../styles/Home.module.css";
 
 export default function TextBox({ text, setText }) {  
+    const [check, setCheck] = useState(false);
+    const checkStyle = {fontSize: 24,
+        color: 'rgba(96, 191, 161, 1)'
+      }
+
     return (
       <div className={homeStyles.container}>
-        <h3>Step 1: Choose Labels</h3>
+        <h3>Step 1: Choose Labels<span style={checkStyle}>{check ? ' ✔' : null }</span></h3>
         <div className={textBoxStyles.nav}>
-            <Inputs text={text} setText={setText}/>
+            <Inputs text={text} setText={setText} setCheck={setCheck}/>
         </div>
       </div>
     );
   }
 
-function Inputs({ text, setText }) {
+function Inputs({ text, setText, setCheck }) {
     const handleSubmit = event => {
         event.preventDefault();
         if (!event.target.elements.prompt.value) {
@@ -27,9 +32,7 @@ function Inputs({ text, setText }) {
             label2: event.target.elements.label2.value === "ex: Sriracha Sauce" ? "" : event.target.elements.label2.value,
         };
         setText(newText);
-        event.target.elements.prompt.value = "";
-        event.target.elements.label1.value = "";
-        event.target.elements.label2.value = "";
+        setCheck(true);
     }
 
     return (
