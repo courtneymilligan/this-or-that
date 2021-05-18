@@ -35,7 +35,7 @@ export default function ImageBox({ image1, image2, setImage1, setImage2 }) {
         <h3>Step 2: Select Images<span style={checkStyle}> &#10004;</span></h3>
         <div className={imageBoxStyles.nav}>
           <ImageSearch setCategory={setCategory} category={category} />
-          <p>NOTE: square images display better</p>
+          <p>NOTE: images will be cropped as squares</p>
         </div>
         <Images
           setImage={setImage}
