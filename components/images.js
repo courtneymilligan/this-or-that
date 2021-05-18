@@ -140,7 +140,8 @@ function ImageSearch({ setCategory, category }) {
         </div>
         <button 
           onClick={handleClick}
-          className={imageBoxStyles.button}disabled={!hasNextPage || isFetchingNextPage}
+          className={imageBoxStyles.button}
+          disabled={!hasNextPage || isFetchingNextPage}
           >
             { hasNextPage
               ? 'Load More'
@@ -203,18 +204,32 @@ function ImageSearch({ setCategory, category }) {
     return (
       <div className={imageBoxStyles["lightbox-container"]} onClick={onBackgroundClick}>
         <div className={imageBoxStyles.lightbox}>
-          <button className={imageBoxStyles.exit} onClick={onBackClick}>
+          <button 
+          type="button"
+          className={imageBoxStyles.exit} 
+          onClick={event => {
+            event.target.focus();
+            onBackClick();
+          }}>
             &#10006;
           </button>
           <button
-            className={`${imageBoxStyles["switch-photo"]} ${imageBoxStyles.previous} ${image > 0 ? null : imageBoxStyles.disabled}`}
-            onClick={previousImage}
+          type="button"
+          className={`${imageBoxStyles["switch-photo"]} ${imageBoxStyles.previous} ${image > 0 ? null : imageBoxStyles.disabled}`}
+          onClick={event => {
+            event.target.focus();
+            previousImage();
+          }}
           >
             &#60;
           </button>
           <button
-            className={`${imageBoxStyles["switch-photo"]} ${imageBoxStyles.next} ${image < data.pages.length*10 - 1 ? null : imageBoxStyles.disabled}`}
-            onClick={nextImage}
+          type="button"
+          className={`${imageBoxStyles["switch-photo"]} ${imageBoxStyles.next} ${image < data.pages.length*10 - 1 ? null : imageBoxStyles.disabled}`}
+          onClick={event => {
+            event.target.focus();
+            nextImage();
+          }}
           >
             &#62;
           </button>
