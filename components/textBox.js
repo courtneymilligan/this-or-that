@@ -41,13 +41,15 @@ function Inputs({ text, setText, setCheck }) {
                 <label htmlFor="prompt">Prompt:</label>
                 <InputField field="prompt" startValue="ex: Select the superior hot sauce"></InputField>
             </div>
-            <div className={textBoxStyles.label}>
-                <label htmlFor="label1">Label for first image (optional):</label>
-                <InputField field="label1" startValue="ex: Frank's Red Hot Sauce"></InputField>
-            </div>
-            <div className={textBoxStyles.label}>
-                <label htmlFor="label2">Label for second image (optional):</label>
-                <InputField field="label2" startValue="ex: Sriracha Sauce"></InputField>  
+            <div className={textBoxStyles.labels}>
+                <div className={textBoxStyles.label}>
+                    <label htmlFor="label1">Label for first image (optional):</label>
+                    <InputField field="label1" startValue="ex: Frank's Red Hot Sauce"></InputField>
+                </div>
+                <div className={textBoxStyles.label}>
+                    <label htmlFor="label2">Label for second image (optional):</label>
+                    <InputField field="label2" startValue="ex: Sriracha Sauce"></InputField>  
+                </div>
             </div>
             <button type="submit" className={textBoxStyles.button}>Submit</button>
         </form>

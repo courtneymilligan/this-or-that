@@ -7,7 +7,6 @@
 
 .previewCase {
     max-width: 700px;
-    min-width: 500px;
 }
 
 .preview {
@@ -98,6 +97,8 @@
 .sendBox {
     max-height: 200px;
     padding: 15px 0;
+    text-align: center;
+
 }
 
 .sendBox label,
@@ -131,11 +132,62 @@
     background-color: rgba(96, 191, 161, 1);
 }
 
-@media only screen and (max-width: 790px) {
-    /*------------Image Container settings-------------*/
+@media only screen and (max-width: 770px) {    
+    .prompt {
+        font-size: 18px;
+    }
+    
+    .labels {
+        bottom: -30px;
+        font-size: 16px;
+    }
+    
+    .or {
+        height: 44px;
+        width: 44px;
+        line-height: 42px;
+        font-size: 20px;
+        border-radius: 22px;
+        left: -22px;
+        margin-right: -44px;
+    }
+    
+    .imageCase {
+        padding-bottom: 40px;
+        padding-top: 10px;
+    }
+    
     .imageContainer {
+        margin: 5px;
         width: 200px;
         height: 200px;
+        border-radius: 5px;
     }
   }
-  
+
+  @media only screen and (max-width: 590px) {   
+    .prompt {
+        font-size: 16px;
+    }
+
+    .labels {
+        font-size: 12px;
+    }
+
+    .or {
+        height: 34px;
+        width: 34px;
+        line-height: 32px;
+        font-size: 16px;
+        border-radius: 17px;
+        left: -17px;
+        margin-right: -34px;
+    }
+    
+    .imageContainer {
+        margin: 5px;
+        width: 100px;
+        height: 100px;
+        border-radius: 3px;
+    }
+  }
