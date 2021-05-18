@@ -190,4 +190,12 @@
         height: 100px;
         border-radius: 3px;
     }
+
+    .sendBox input {
+        width: auto;
+    }
+
+    .textContainer {
+        font-size: 12px;
+    }
   }
