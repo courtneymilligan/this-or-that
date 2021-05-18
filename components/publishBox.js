@@ -9,6 +9,7 @@ export default function PublishBox({ image1, image2, text }) {
         fontSize: '22px',
         lineHeight: '50%',
         color: 'rgba(96, 191, 161, 1)',
+        textShadow: 'rgba(96, 191, 161, 1)',
         display: check ? 'inline' : 'none'
     }
 

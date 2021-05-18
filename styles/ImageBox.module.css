@@ -197,6 +197,8 @@
       box-shadow: none;
       padding: auto;
       width: auto;
+      text-align: center;
+      text-shadow: rgb(231, 231, 231);
       overflow: visible;
     }
 
