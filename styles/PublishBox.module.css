@@ -81,7 +81,6 @@
 }
 
 .textContainer {
-    position: absolute;
     width: 80%;
 }
 
@@ -197,5 +196,9 @@
 
     .textContainer {
         font-size: 12px;
+        width: 78%;
+        position: absolute;
+        top: 36%;
+        transform: translate(0, -50%);
     }
   }
