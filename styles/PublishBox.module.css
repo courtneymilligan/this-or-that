@@ -191,6 +191,10 @@
         border-radius: 3px;
     }
 
+    .imageContainer img {
+        border-radius: 3px;
+    }
+
     .sendBox input {
         width: auto;
     }
