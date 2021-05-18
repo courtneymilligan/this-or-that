@@ -63,7 +63,6 @@ function ImageSearch({ setCategory, category }) {
           id="category"
           name="category"
           defaultValue={category}
-          size="35"
           onFocus={(event) => {
             event.target.value = "";
             setFocus(true);

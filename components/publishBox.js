@@ -1,6 +1,6 @@
 import publishBoxStyles from "../styles/PublishBox.module.css";
 import homeStyles from "../styles/Home.module.css";
-import React, { useState, useEffect, createRef } from "react";
+import React, { useState, createRef } from "react";
 
 export default function PublishBox({ image1, image2, text }) {
   const ref = createRef();

@@ -8,31 +8,35 @@
 }
 
 .nav div {
-    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
 }
 
 .label {
-    display: inline-block;
     margin: 0 20px;
+}
+
+.label,
+.prompt {
+   padding-top: 20px;
+   justify-content: center;
 }
 
 .label input {
     width: 250px;
 }
 
-.prompt {
-    display: block;
-}
-
 .prompt input {
-    width: 500px;
-    max-width: 50%;
+    max-width: 500px;
+    min-width: 250px;
 }
 
 .nav label,
 .nav input {
     font-size: 16px;
-    margin: 0 5px;
+    margin: 2px 5px;
 }
 
 .nav input {
