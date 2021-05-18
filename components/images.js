@@ -17,6 +17,7 @@ export default function ImageBox({ image1, image2, setImage1, setImage2 }) {
       fontSize: '22px',
       lineHeight: '50%',
       color: 'rgba(96, 191, 161, 1)',
+      textShadow: 'rgba(96, 191, 161, 1)',
       display: image1 && image2 ? 'inline' : 'none'
     }
   
