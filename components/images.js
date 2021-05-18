@@ -33,7 +33,7 @@ export default function ImageBox({ image1, image2, setImage1, setImage2 }) {
             category={category}
           />
         ) : null}
-        <h3>Step 2: Select Images<span style={checkStyle}> &#x2714;</span></h3>
+        <h3>Step 2: Select Images<span style={checkStyle}> &#x2713;</span></h3>
         <div className={imageBoxStyles.nav}>
           <ImageSearch setCategory={setCategory} category={category} />
           <p>NOTE: images will be cropped as squares</p>
@@ -212,7 +212,7 @@ function ImageSearch({ setCategory, category }) {
             event.target.focus();
             onBackClick();
           }}>
-            &#x2716;
+            &#x2715;
           </button>
           <button
           type="button"
