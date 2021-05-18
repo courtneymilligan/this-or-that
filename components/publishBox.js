@@ -96,7 +96,7 @@ export default function PublishBox({ image1, image2, text }) {
 
   return (
     <div className={homeStyles.container}>
-      <h3>Step 3: Send It Out<span style={checkStyle}> &#10004;</span></h3>
+      <h3>Step 3: Send It Out<span style={checkStyle}> &#x2714;</span></h3>
       <div className={publishBoxStyles.contentContainer}>
         <div className={publishBoxStyles.previewCase}>
           <p className={publishBoxStyles.preview}>Preview of Selections</p>

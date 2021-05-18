@@ -14,7 +14,7 @@ export default function TextBox({ text, setText }) {
 
     return (
       <div className={homeStyles.container}>
-        <h3>Step 1: Choose Labels<span style={checkStyle}> &#10004;</span></h3>
+        <h3>Step 1: Choose Labels<span style={checkStyle}> &#x2714;</span></h3>
         <div className={textBoxStyles.nav}>
             <Inputs text={text} setText={setText} setCheck={setCheck}/>
         </div>
