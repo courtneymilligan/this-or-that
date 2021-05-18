@@ -4,13 +4,16 @@ import homeStyles from "../styles/Home.module.css";
 
 export default function TextBox({ text, setText }) {  
     const [check, setCheck] = useState(false);
-    const checkStyle = {fontSize: 24,
-        color: 'rgba(96, 191, 161, 1)'
-      }
+    const checkStyle = {
+        fontSize: '22px',
+        lineHeight: '50%',
+        color: 'rgba(96, 191, 161, 1)',
+        display: check ? 'inline' : 'none'
+    }
 
     return (
       <div className={homeStyles.container}>
-        <h3>Step 1: Choose Labels<span style={checkStyle}>{check ? ' ✔' : null }</span></h3>
+        <h3>Step 1: Choose Labels<span style={checkStyle}> &#10004;</span></h3>
         <div className={textBoxStyles.nav}>
             <Inputs text={text} setText={setText} setCheck={setCheck}/>
         </div>

@@ -13,8 +13,11 @@ export default function ImageBox({ image1, image2, setImage1, setImage2 }) {
     const onBackClick = () => {
       setImage(-1);
     };
-    const checkStyle = {fontSize: 24,
-      color: 'rgba(96, 191, 161, 1)'
+    const checkStyle = {
+      fontSize: '22px',
+      lineHeight: '50%',
+      color: 'rgba(96, 191, 161, 1)',
+      display: image1 && image2 ? 'inline' : 'none'
     }
   
     return (
@@ -29,9 +32,10 @@ export default function ImageBox({ image1, image2, setImage1, setImage2 }) {
             category={category}
           />
         ) : null}
-        <h3>Step 2: Select Images<span style={checkStyle}>{image1 && image2 ? ' ✔' : null }</span></h3>
+        <h3>Step 2: Select Images<span style={checkStyle}> &#10004;</span></h3>
         <div className={imageBoxStyles.nav}>
           <ImageSearch setCategory={setCategory} category={category} />
+          <p>NOTE: square images display better</p>
         </div>
         <Images
           setImage={setImage}
@@ -200,7 +204,7 @@ function ImageSearch({ setCategory, category }) {
       <div className={imageBoxStyles["lightbox-container"]} onClick={onBackgroundClick}>
         <div className={imageBoxStyles.lightbox}>
           <button className={imageBoxStyles.exit} onClick={onBackClick}>
-            ✖
+            &#10006;
           </button>
           <button
             className={`${imageBoxStyles["switch-photo"]} ${imageBoxStyles.previous} ${image > 0 ? null : imageBoxStyles.disabled}`}
