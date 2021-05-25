@@ -76,7 +76,10 @@ export default function PublishBox({ image1, image2, text }) {
     }
     
     Email.send({
-      SecureToken : process.env.NEXT_PUBLIC_EMAIL_TOKEN,
+      Host : "smtp.mailgun.org",
+      Port: 587,
+      Username : process.env.NEXT_PUBLIC_EMAIL_USERNAME,
+      Password : process.env.NEXT_PUBLIC_EMAIL_PASSWORD,
       To : email,
       From : process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
       Subject : "This or That!",
@@ -90,6 +93,7 @@ export default function PublishBox({ image1, image2, text }) {
           }
         }
       );
+
     setCheck(true);
     event.target.elements.email.value = "";
   };

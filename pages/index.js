@@ -18,7 +18,7 @@ export default function App() {
     <>
       <Head>
         <title>Create Next App</title>
-        <meta charset="UTF-8"></meta>
+        <meta charSet="UTF-8"></meta>
         <link rel="icon" href="/question.png" />
         <script src="https://smtpjs.com/v3/smtp.js"></script>
       </Head>
