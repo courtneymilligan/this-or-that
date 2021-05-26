@@ -78,10 +78,10 @@ export default function PublishBox({ image1, image2, text }) {
     Email.send({
       Host : "smtp.mailgun.org",
       Port: 587,
-      Username : process.env.EMAIL_USERNAME,
-      Password : process.env.EMAIL_PASSWORD,
+      Username : process.env.NEXT_PUBLIC_EMAIL_USERNAME,
+      Password : process.env.NEXT_PUBLIC_EMAIL_PASSWORD,
       To : email,
-      From : process.env.EMAIL_ADDRESS,
+      From : process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
       Subject : "This or That!",
       Body : document.getElementById("email-content").innerHTML,
     }).then(
