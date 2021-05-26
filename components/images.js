@@ -88,8 +88,8 @@ function ImageSearch({ setCategory, category }) {
     const url = new URL("https://www.googleapis.com/customsearch/v1");
   
     const queryParams = {
-      key: process.env.NEXT_PUBLIC_SEARCH_ENGINE_API_KEY,
-      cx: process.env.NEXT_PUBLIC_SEARCH_ENGINE_ID,
+      key: process.env.SEARCH_ENGINE_API_KEY,
+      cx: process.env.SEARCH_ENGINE_ID,
       searchType: "image",
       q:
         category === "ex: Frank's Red Hot Sauce"
