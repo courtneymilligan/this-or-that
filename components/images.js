@@ -4,7 +4,8 @@ import {
   useQueryClient
 } from "react-query";
 import imageBoxStyles from "../styles/ImageBox.module.css";
-import homeStyles from "../styles/Home.module.css"
+import homeStyles from "../styles/Home.module.css";
+import axios from "axios";
 
 export default function ImageBox({ image1, image2, setImage1, setImage2 }) {
     const [image, setImage] = useState(-1);
@@ -86,10 +87,12 @@ function ImageSearch({ setCategory, category }) {
 
   function Images({ setImage, category }) {
     const url = new URL("https://www.googleapis.com/customsearch/v1");
+    //const res = axios.get('/api/hello');
+    //console.log(res);
   
     const queryParams = {
-      key: process.env.NEXT_PUBLIC_SEARCH_ENGINE_API_KEY,
-      cx: process.env.NEXT_PUBLIC_SEARCH_ENGINE_ID,
+      key: "test",//process.env.NEXT_PUBLIC_SEARCH_ENGINE_API_KEY,
+      cx: "test",//process.env.NEXT_PUBLIC_SEARCH_ENGINE_ID,
       searchType: "image",
       q:
         category === "ex: Frank's Red Hot Sauce"
@@ -115,8 +118,12 @@ function ImageSearch({ setCategory, category }) {
       getNextPageParam: () => data ? (data.pageParams.length > 1 ? data.pageParams.slice(-1)[0] + 1 : 1) : 1//pageNum + 1
     })
 
+    console.log("before returns",error,data)
     if (isLoading) return  <div className={imageBoxStyles["images-container"]}>Loading...</div>;
     if (error) return <div className={imageBoxStyles["images-container"]}>{"An error has occurred: " + error.message}</div>;
+    if (data.pages[0].error) return <div className={imageBoxStyles["images-container"]}>{"An error has occurred: " + data.pages[0].error.message}</div>;
+    
+    console.log("after returns",error,data)
 
     const handleClick = () => {
       fetchNextPage()
